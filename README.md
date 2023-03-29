@@ -6,6 +6,6 @@ Realizado um request para obter uma amostra de filmes e exibi-los no terminal
 
 ## Aula 2 upcoming...
 Utilizando dados dos filmes criando uma imagem personalizada e salvar em disco para compartilhamento.
-<img src="./assets/images/film#2.png">
+<img src="./assets/images/film_2.png">
 
 ## Aula 3 upcoming...

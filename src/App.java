@@ -34,7 +34,7 @@ public class App {
 
             filmInfo += "(" + rating + ")" + "\n\r";
 
-            generator.create(film.get("image"), filmInfo, "film" + "#" + j);
+            generator.create(film.get("image"), filmInfo, "film" + "_" + j);
 
             j++;
         }
