@@ -16,6 +16,7 @@ public class App {
         HttpRequest request = HttpRequest.newBuilder(uri).GET().build();
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
         String body = response.body();
+        var generator = new StickerGenerator();
 
         // extrair os dados (titulo, poster, classificação)
         var parser = new JSONParser();
@@ -24,24 +25,18 @@ public class App {
         int j = 1;
 
         for (Map<String, String> film : filmList) {
-            System.out.println("#" + j);
-            System.out.println("Title: " + film.get("title"));
-            System.out.println("poster: " + film.get("image"));
+            String filmInfo = "";
+
+            // filmInfo += "#" + j + "\n\r";
+            filmInfo += film.get("title") + " \n\r";
+            // filmInfo += film.get("image") + "\n\r";
             var rating = film.get("imDbRating");
-            System.out.printf("IMDB Rating: ");
-            if (rating != null) {
-                var ratingNumber = Double.parseDouble(rating);
-                for (int i = 0; i < Math.floor(ratingNumber); i++) {
-                    System.out.printf("* ");
-                }
-            }
-            System.out.printf("(" + rating + ")");
-            System.out.println();
-            System.out.println();
+
+            filmInfo += "(" + rating + ")" + "\n\r";
+
+            generator.create(film.get("image"), filmInfo, "film" + "#" + j);
 
             j++;
         }
-
-        // exibir e manipular os dados
     }
 }
