@@ -6,11 +6,14 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
 public class StickerGenerator {
-    void create(String imageUrl, String imgText, String outputFileName) {
+    void create(String imageUrl, String imgText, String outputPath, String outputFileName) {
         // read image
         try {
             InputStream inputStream = new URL(imageUrl).openStream();
@@ -37,7 +40,11 @@ public class StickerGenerator {
             graphics.drawString(imgText, 0, imgTextPosition);
 
             // save new image to the file
-            ImageIO.write(newImage, "png", new File("assets/images/" + outputFileName + ".png"));
+            Path path = Paths.get("output/" + outputPath);
+
+            // java.nio.file.Files;
+            Files.createDirectories(path);
+            ImageIO.write(newImage, "png", new File("output/" + outputPath + outputFileName + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
