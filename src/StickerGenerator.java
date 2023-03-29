@@ -37,7 +37,7 @@ public class StickerGenerator {
             graphics.drawString(imgText, 0, imgTextPosition);
 
             // save new image to the file
-            ImageIO.write(newImage, "png", new File("output/" + outputFileName + ".png"));
+            ImageIO.write(newImage, "png", new File("assets/images/" + outputFileName + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
